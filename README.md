@@ -18,14 +18,16 @@ Just replace YOUR-BRANCH-NAME with the name of the task.
 This command and everything below it is important for letting everyone receive your code and to update the webstie on master.
 Adds all changes for the code u edited to be tracked with git before committing.
 
-### git commit -m COMMIT-MESSAGE
+### git commit -m "COMMIT-MESSAGE"
 
 Run this After running git add -A, this puts your changes into a commit with the message you wrote.
 Next thing to do is to push the code changes to your branch that you created.
+You do need to put the message in "" marks as if your writing a string in the terminal.
 
 ### git push
 Running this command for the first time in your branch will throw a error.
-Thats okay, it will give you a command to copy and paste so do that and run it again, then you should be good to go.
+Your gonna see in that error a command: git push --set-upstream origin YOUR-BRANCH-NAME
+Thats okay, just copy and paste the command and run it again, then you should be good to go.
 
 ### git checkout master
 Run this command so you can switch from the branch you made to the master branch.
