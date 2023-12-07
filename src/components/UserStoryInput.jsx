@@ -1,6 +1,9 @@
+import { useRef } from 'react';
 import '../styles/UserStoryInput.css';
 
 function UserStoryInput() {
+  const userDescTextRef = useRef();
+
   return (
     <div className='story-input'>
       <div>
@@ -16,7 +19,9 @@ function UserStoryInput() {
           type="text" 
           id="storyDesc" 
           name="storyDesc" 
-          placeholder="Enter Story Description To Be Parsed"/>
+          placeholder="Enter Story Description To Be Parsed"
+          spellCheck="true"
+          />
         </div>
       </div>
     </div>
