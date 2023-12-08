@@ -1,29 +1,43 @@
-import { useRef } from 'react';
 import '../styles/UserStoryInput.css';
+import TextField from '@mui/material/TextField';
 
 function UserStoryInput() {
-  const userDescTextRef = useRef();
 
   return (
     <div className='story-input'>
-      <div>
-        <div className="story-title">
-          <label for="storyTitle">Story Title: </label>
-          <input type="text" id="storyTitle" name="storyTitle" placeholder="Enter Story Title" />
-        </div>
-        <div className='story-desc'>
-          <label for="storyDesc">Story Description: </label>
-          <textarea 
-          rows="6" 
-          cols="55"
-          type="text" 
-          id="storyDesc" 
-          name="storyDesc" 
-          placeholder="Enter Story Description To Be Parsed"
-          spellCheck="true"
-          />
-        </div>
-      </div>
+      <TextField
+      required
+      id="standard-required"
+      label="User Story Title"
+      variant="filled"
+      sx={{
+        width: '600px',
+        marginBottom: '20px'
+      }}
+      />
+      <TextField
+      required
+      id="filled-multiline-static"
+      label="User Story Description"
+      multiline
+      rows={4}
+      variant="filled"
+      sx={{
+        width: '600px',
+        marginBottom: '20px'
+      }}
+      />
+      <TextField
+      id="standard-required"
+      label="Story Subject"
+      variant="filled"
+      className='text-input'
+      helperText='Enter a noun that will be interacted with the most in the user story. This is to detect nouns more accurately'
+      sx={{
+        width: '600px',
+        marginBottom: '20px'
+      }}
+      />
     </div>
   );
 }
