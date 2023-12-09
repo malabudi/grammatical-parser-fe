@@ -1,4 +1,4 @@
-import '../styles/UserStoryInput.css';
+import '../styles/reportpage.css';
 import TextField from '@mui/material/TextField';
 
 function UserStoryInput() {
