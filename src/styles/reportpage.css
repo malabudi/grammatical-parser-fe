@@ -1,0 +1,69 @@
+/* styles.css */
+
+.main-box {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border: 10px solid #c0bebe;
+    border-radius: 15px;
+    max-width: 800px;
+    margin: auto;
+    box-shadow: 0 10px 8px rgba(17, 16, 16, 0.1);
+    margin-bottom: 20px; /* Add space between stories */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth background color and scaling transition */
+}
+
+.main-box:hover {
+    background-color: #4882a4; /* Lighten background color on hover */
+    transform: scale(1.05); /* Scale up on hover */
+}
+
+.box-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.box {
+    flex: 1;
+    padding: 10px;
+    border: 10px solid #b8b6b6;
+    border-radius: 30px;
+    background-color: #fff;
+    box-sizing: border-box;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-right: 10px; /* Add space between boxes */
+    transition: box-shadow 0.3s ease; /* Smooth box-shadow transition */
+}
+
+.box:hover {
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1); /* Increase box-shadow on hover */
+}
+
+h2 {
+    color: #333;
+    font-size: 1.5em;
+    margin-bottom: 50px; /* Add space between title and content */
+}
+
+h3 {
+    color: #555;
+}
+
+/* Adjusted padding for the word list */
+.word-list {
+    list-style-type: none;
+    padding: 15px;
+    border-radius: 30px;
+    margin: 0;
+    background-color: #e0e0e0; /* Different color for the word list padding */
+    border-radius: 8px; /* Add border-radius for a rounded look */
+}
+
+.word-list li {
+    padding: 8px 0;
+    text-align: left; /* Align text to the left */
+}
+
+.word-list li:not(:last-child) {
+    border-bottom: 1px solid #553636;
+}
