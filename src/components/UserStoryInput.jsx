@@ -1,7 +1,10 @@
 import '../styles/UserStoryInput.css';
 import TextField from '@mui/material/TextField';
 
-function UserStoryInput() {
+function UserStoryInput(props) {
+  const onChangeDesc = (event) => {
+    props.setStoryDesc(event.target.value);
+  }
 
   return (
     <div className='story-input'>
@@ -26,6 +29,7 @@ function UserStoryInput() {
         width: '600px',
         marginBottom: '20px'
       }}
+      onChange={onChangeDesc}
       />
       <TextField
       id="standard-required"

@@ -1,22 +1,44 @@
 import './App.css';
-import HowItWorks from './components/HowItWorks';
-import UserStoryInput from './components/UserStoryInput';
-import ParseClear from './components/ParseClear';
 import Footer from './components/Footer';
+import {QueryClient, QueryClientProvider} from 'react-query';
+import ParsePage from './pages/ParsePage';
+import { useState } from 'react';
+import EditListsPage from './pages/EditListsPage';
 
 function App() {
+  const queryClient = new QueryClient();
+
+  const [storyDesc, setStoryDesc] = useState('');
+  const [isParsed, setIsParsed] = useState(false);
+
+  const handleClick = () => {
+    setIsParsed(true)
+  }
+
   return (
-    <div className="App">
-      <h1>Main Page</h1>
-      <br></br>
-      <HowItWorks />
-      <br></br>
-      <UserStoryInput />
-      <br></br>
-      <ParseClear />
-      <br></br>
-      <Footer />
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <div className="App">
+        {!isParsed &&
+          <>
+            <h1>Main Page</h1>
+            <ParsePage 
+              setStoryDesc={setStoryDesc}
+            />
+            <button onClick={handleClick}/>
+            <Footer />
+          </>
+        }
+        {isParsed &&
+          <>
+            <h1>Main Page</h1>
+            <EditListsPage
+              storyDesc={storyDesc}
+            />
+            <Footer />
+          </>
+        }
+      </div>
+		</QueryClientProvider>
   );
 }
 
