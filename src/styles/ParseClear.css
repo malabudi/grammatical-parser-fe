@@ -1,0 +1,17 @@
+button{
+    background-color: aquamarine;
+    height: 50px;
+    
+    border-style: solid;
+    font-size: medium;
+    padding: 10px 25px;
+    border-radius: 5px;
+    border: 1px solid black;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.buttons button{
+    margin: 10px;
+    cursor: pointer;
+}
