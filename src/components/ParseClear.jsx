@@ -1,9 +1,25 @@
 import '../styles/ParseClear.css';
 
+function ParseButton(){
+  return(
+    <button> Parse</button>
+  );
+}
+
+function ClearButton(){
+  return(
+    <button> Clear</button>
+  );
+}
+
+
 function ParseClear() {
   return (
     <div>
-      <h2>Parse and Clear Btn Here</h2>
+     <h2> 
+    <div className='buttons'> <ParseButton /> 
+    <ClearButton /> </div>
+    </h2>
     </div>
   );
 }
