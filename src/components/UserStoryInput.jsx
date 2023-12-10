@@ -2,8 +2,16 @@ import '../styles/UserStoryInput.css';
 import TextField from '@mui/material/TextField';
 
 function UserStoryInput(props) {
+  const onChangeTitle = (event) => {
+    props.setStoryTitle(event.target.value);
+  }
+
   const onChangeDesc = (event) => {
     props.setStoryDesc(event.target.value);
+  }
+
+  const onChangeSubj = (event) => {
+    props.setStorySubj(event.target.value);
   }
 
   return (
@@ -18,6 +26,8 @@ function UserStoryInput(props) {
           width: '600px',
           marginBottom: '20px'
         }}
+        onChange={onChangeTitle}
+        value={props.storyTitle}
         />
         <TextField
         required
@@ -31,10 +41,11 @@ function UserStoryInput(props) {
           marginBottom: '20px'
         }}
         onChange={onChangeDesc}
+        value={props.storyDesc}
         />
         <TextField
         id="standard-required"
-        label="Story Subject"
+        label="Story Subject (optional)"
         variant="filled"
         className='text-input'
         helperText='Enter a noun that will be interacted with the most in the user story. This is to detect nouns more accurately'
@@ -42,6 +53,8 @@ function UserStoryInput(props) {
           width: '600px',
           marginBottom: '20px'
         }}
+        onChange={onChangeSubj}
+        value={props.storySubj}
         />
       </div>
     </div>

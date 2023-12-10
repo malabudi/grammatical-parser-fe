@@ -9,12 +9,10 @@ import ReportPage from './components/reportpage';
 function App() {
   const queryClient = new QueryClient();
 
+  const [storyTitle, setStoryTitle] = useState('');
   const [storyDesc, setStoryDesc] = useState('');
+  const [storySubj, setStorySubj] = useState('');
   const [isParsed, setIsParsed] = useState(false);
-
-  const handleClick = () => {
-    setIsParsed(true)
-  }
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -22,10 +20,15 @@ function App() {
         {!isParsed &&
           <>
             <h1>Main Page</h1>
-            <ParsePage 
+            <ParsePage
+              setStoryTitle={setStoryTitle}
               setStoryDesc={setStoryDesc}
+              setStorySubj={setStorySubj}
+              setIsParsed={setIsParsed}
+              storyTitle={storyTitle}
+              storyDesc={storyDesc}
+              storySubj={storySubj}
             />
-            <button onClick={handleClick}/>
             <Footer />
           </>
         }

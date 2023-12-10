@@ -1,4 +1,6 @@
 import {useQuery} from 'react-query';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 function EditListsPage(props) {
     /*As a database administrator, I want to back up our data daily so that we can recover information in case of data loss.*/
@@ -23,8 +25,18 @@ function EditListsPage(props) {
 
     const { isLoading, error, data } = useQuery('nouns', parseDesc);
 
-    if (error) return <div>Request Failed</div>;
-	if (isLoading) return <div>Loading...</div>;
+    if (error) return <div>Request Failed, please refresh the page.</div>;
+	if (isLoading) return (
+    <div>
+        <Box sx={{ 
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+        }}>
+            <CircularProgress />
+        </Box>
+    </div>
+    );
 
     return (
         <div>
