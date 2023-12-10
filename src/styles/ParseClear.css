@@ -1,7 +1,6 @@
-button{
-    background-color: aquamarine;
+button {
+    background-color: rgb(185, 249, 228);
     height: 50px;
-    
     border-style: solid;
     font-size: medium;
     padding: 10px 25px;
@@ -11,7 +10,19 @@ button{
     font-weight: 500;
 }
 
-.buttons button{
-    margin: 10px;
+.buttons button {
+    margin: 20px;
     cursor: pointer;
+    transition: 200ms all ease;
+}
+
+.buttons button:hover {
+    transform: scale(1.03);
+    background-color: aquamarine;
+}
+
+.buttons button:disabled {
+    background-color: rgb(203, 209, 206);
+    cursor: default;
+    transform: scale(1);
 }
