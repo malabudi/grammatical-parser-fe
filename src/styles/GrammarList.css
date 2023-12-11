@@ -1,0 +1,27 @@
+.NounList {
+    background-color: lightblue;
+    width: 45%;
+    margin-right: 1rem;
+    font-size: medium;
+    padding: 10px 25px;
+}
+
+.VerbList {
+    background-color: rgb(174, 144, 243);
+    width: 45%;
+    
+    font-size: medium;
+    padding: 10px 25px;
+}
+
+.ListContainer{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.list div{
+    align-items: first baseline;
+    margin: 10px;
+    cursor: pointer;
+}
