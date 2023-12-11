@@ -1,47 +1,53 @@
-.popup-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: auto;
-  height: auto;
-  border-radius: 100px;
-}
 
 .popup {
   padding: 10px; /* Adjust the padding as needed */
-  margin-top: 20px; /* Remove top margin */
+  margin-top: 0px; /* Remove top margin */
   border-radius: 100px;
   box-shadow: 10 10 10px rgba(80, 62, 62, 0.1);
-  max-width: 1000px; /* Adjust the maximum width as needed */
+  max-width: fit; /* Adjust the maximum width as needed */
+  justify-content: center;
   display: flex;
   flex-direction: column; /* Stack children (box-container and other elements) vertically */
 }
 
-.box-container {
-  display: flex;
-  border-top: 10;
-  border-radius: 100px;
-  justify-content: center; /* Adjust as needed */
-  margin-top: -80px; /* Adjust the negative margin to push the box up */
+.box-container  {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .word-list {
-  list-style-type: none;
-  justify-content: ce;
-  padding: 20px;
-  text-align: center; /* Center the text in the word list */
+    flex: 1;
+    padding: 5px;
+    border: 5px solid #b8b6b6;
+    border-radius: 30px;
+    background-color: #fff;
+    box-sizing: border-box;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-right: 0px; /* Add space between boxes */
+    transition: box-shadow 0.3s ease; /* Smooth box-shadow transition */
+}
+.final-save-button{
+  cursor: pointer;
+  background-color: #5149e9; /* Red background color */
+  color: #f1eded;
+  border: none;
+  
+  padding: 5px 10px; /* Adjust the padding as needed */
+  border-radius: 10px;
+  margin-left: 10px;
+  font-size: 12px; /* Adjust the font size for a smaller button */
 }
 
-.word-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-
-}
-
-.word-item input{
-  margin: 10px;
+.save-editedwords-button{
+  cursor: pointer;
+  background-color: #026e0f; /* Red background color */
+  color: #f1eded;
+  border: none;
+  padding: 15px; /* Adjust the padding as needed */
+  border-radius: 10px;
+  margin-left: 10px;
+  font-size: 12px; /* Adjust the font size for a smaller button */
 }
 /* editmodel.css */
 
@@ -56,18 +62,32 @@
 .input-box input[type="text"] {
   width: 100px; /* Adjust the width as needed */
 }
-.add-button,
 .delete-button {
   cursor: pointer;
   background-color: #ff0000; /* Red background color */
   color: #f90202;
   border: none;
-  padding: 5px 10px;
-  border-radius: 50px;
+  padding: 5px 10px; /* Adjust the padding as needed */
+  border-radius: 10px;
   margin-left: 10px;
+  font-size: 12px; /* Adjust the font size for a smaller button */
 }
 
-.add-button:hover,
+
 .delete-button:hover {
   background-color: #161616; /* Darker red on hover */
+}
+.delete-button {
+  cursor: pointer;
+  background-color: #ea1313; /* Red background color */
+  color: #f5f3f3; /* White text color */
+
+  padding:  -100px;
+  
+  margin-left: 10px;
+  transition: background-color 0.3s ease; /* Add transition for smooth hover effect */
+}
+
+.delete-button:hover {
+  background-color: #c03a3a; /* Darker red on hover */
 }

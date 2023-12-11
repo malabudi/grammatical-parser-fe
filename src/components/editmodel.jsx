@@ -53,14 +53,17 @@ const EditableWordList = ({ title, items, onUpdate, onAdd, onDelete }) => {
                   value={editDescription}
                   onChange={(e) => setEditDescription(e.target.value)}
                 />
-                <button onClick={() => handleUpdate(index, title.toLowerCase())}>Save</button>
+                <button className='save-editedwords-button' onClick={() => handleUpdate(index, title.toLowerCase())}>Save</button>
               </div>
             ) : (
               <div onClick={() => handleItemClick(index)}>
+                
                 <span>
                   <strong>{item.word}</strong>: {item.description}
+                  
                 </span>
-                <button onClick={() => handleDelete(index, title.toLowerCase())}>-</button>
+                <smallbutton className='delete-button'
+                onClick={() => handleDelete(index, title.toLowerCase())}>Delete</smallbutton>
               </div>
             )}
           </li>
@@ -79,7 +82,7 @@ const EditableWordList = ({ title, items, onUpdate, onAdd, onDelete }) => {
               onChange={(e) => setNewDescription(e.target.value)}
               placeholder="Description"
             />
-            <button onClick={handleAdd}>Add</button>
+            <button className='add-button'onClick={handleAdd}>Add</button>
           </div>
         </li>
         
@@ -154,7 +157,7 @@ const Editlistmodel = () => {
               />
               
             </div>
-            <button onClick={() => console.log('')}>Save</button> 
+            <button onClick={() => console.log('Save button clicked')}>Save</button> 
           </div>
           
         ))}
