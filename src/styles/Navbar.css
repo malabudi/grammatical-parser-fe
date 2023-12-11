@@ -1,0 +1,22 @@
+.navbar {
+    background-color: #a1ebfd;
+    width: 100vw;
+    padding: 0.7rem 0;
+    display: flex;
+    border-bottom: 1px #848884 solid;
+}
+
+.navbar h1 {
+    margin: 0.7rem 0.5rem;
+}
+
+.nav-button {
+    cursor: pointer;
+    background: transparent;
+    border: none !important;
+    transition: 100ms all ease;
+}
+
+.nav-button:hover {
+    color: #074453;
+}

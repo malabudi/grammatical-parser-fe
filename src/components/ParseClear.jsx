@@ -6,6 +6,7 @@ function ParseButton(props) {
     <button
       onClick={() => (props.setIsParsed(true))}
       disabled={props.storyTitle === '' || props.storyDesc === ''}
+      className='btn'
     >
       Parse
     </button>
@@ -22,6 +23,7 @@ function ClearButton(props) {
   return(
     <button
       onClick={clearFields}
+      className='btn'
     >
       Clear
     </button>

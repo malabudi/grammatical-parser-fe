@@ -3,7 +3,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 
 function EditListsPage(props) {
-    /*As a database administrator, I want to back up our data daily so that we can recover information in case of data loss.*/
+    let story;
 
     const parseDesc = async () => {
 		const res = await fetch('http://localhost:5000/parse', {
@@ -25,6 +25,11 @@ function EditListsPage(props) {
 
     const { isLoading, error, data } = useQuery('nouns', parseDesc);
 
+    const handleSaveClick = () => {
+        props.setStories([...props.stories, story[0]]);
+        props.setIsStorySaved(true);
+    }
+
     if (error) return <div>Request Failed, please refresh the page.</div>;
 	if (isLoading) return (
     <div>
@@ -38,16 +43,59 @@ function EditListsPage(props) {
     </div>
     );
 
+    data.nouns.map((item) => {
+        const nounsArr = [];
+        const verbsArr = [];
+
+        if (item !== null) {
+            for (let i = 0; i < item['associated_nouns'].length; i++) {
+                nounsArr.push({word: item['associated_nouns'][i], description: ''});
+            }
+
+            for (let i = 0; i < item['associated_verbs'].length; i++) {
+                verbsArr.push({word: item['associated_verbs'][i], description: ''});
+            }
+
+            story = [{
+                title: props.storyTitle,
+                nouns: nounsArr,
+                verbs: verbsArr
+            }]
+        }
+
+        return null;
+    })
+
     return (
         <div>
-            {data.nouns.map((item) => {
+            {story.map((element) => {
                 return (
-                <div>
-                    <h1>{item.associated_nouns}</h1>
-                    <h1>{item.associated_verbs}</h1>
-                </div>
-                );
+                    <>
+                        <h1>nouns</h1>
+                        {element.nouns.map((list) => {
+                            return (
+                                <>
+                                    <h2>{list.word}</h2>
+                                </>
+                            )
+                        })}
+                        <h1>verbs</h1>
+                        {element.verbs.map((list) => {
+                            return (
+                                <>
+                                    <h2>{list.word}</h2>
+                                </>
+                            )
+                        })}
+                    </>
+                )
             })}
+            <button
+            onClick={handleSaveClick}
+            className='btn'
+            >
+                Save
+            </button>
         </div>
     );
 }

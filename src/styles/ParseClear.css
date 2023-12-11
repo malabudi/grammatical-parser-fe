@@ -1,4 +1,4 @@
-button {
+.btn {
     background-color: rgb(185, 249, 228);
     height: 50px;
     border-style: solid;
@@ -8,20 +8,17 @@ button {
     border: 1px solid black;
     font-size: 16px;
     font-weight: 500;
-}
-
-.buttons button {
     margin: 20px;
     cursor: pointer;
-    transition: 200ms all ease;
+    transition: 100ms all ease;
 }
 
-.buttons button:hover {
+.btn:hover {
     transform: scale(1.03);
     background-color: aquamarine;
 }
 
-.buttons button:disabled {
+.btn:disabled {
     background-color: rgb(203, 209, 206);
     cursor: default;
     transform: scale(1);

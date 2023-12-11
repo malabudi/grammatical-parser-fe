@@ -1,6 +1,5 @@
 import '../styles/reportpage.css';
-
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 const WordList = ({ title, items }) => (
   <div className="box">
@@ -15,63 +14,19 @@ const WordList = ({ title, items }) => (
   </div>
 );
 
-const ReportPage = () => {
-  // Simulating sample data (replace with actual fetching logic from apii)
-  const sampleStories = [
-    {
-      title: 'Story 1',
-      nouns: [
-        { word: 'Dog', description: 'A furry friend' },
-        { word: 'Tree', description: 'Tall and green' },
-        { word: 'Read', description: 'Understand written words' },
-        { word: 'Read', description: 'Understand written words' },
-        { word: 'Read', description: 'Understand written words' },
-      ],
-      verbs: [
-        { word: 'Run', description: 'Move rapidly' },
-        { word: 'Read', description: 'Understand written words' },
-        { word: 'Read', description: 'Understand written words' },
-        { word: 'Read', description: 'Understand written words' },
-        
-      ],
-    },
-    {
-      title: 'Story 2',
-      nouns: [
-        { word: 'Cat', description: 'Independent creature' },
-        { word: 'Mountain', description: 'Tall and majestic' },
-      ],
-      verbs: [
-        { word: 'Jump', description: 'Leap through the air' },
-        { word: 'Write', description: 'Put thoughts into words' },
-      ],
-    },
-    {
-        title: 'Story 3',
-        nouns: [
-          { word: 'Cat', description: 'Independent creature' },
-          { word: 'Mountain', description: 'Tall and majestic' },
-        ],
-        verbs: [
-          { word: 'Jump', description: 'Leap through the air' },
-          { word: 'Write', description: 'Put thoughts into words' },
-        ],
-      },
-    // Add more sample stories as needed
-  ];
-
-  // State to hold the fetched stories
-  const [stories, setStories] = useState([]);
-
-  useEffect(() => {
-    // Simulating data fetching logic
-    setStories(sampleStories);
-  }, []);
+const ReportPage = (props) => {
+  const handleClick = () => {
+    props.setIsParsed(false);
+    props.setIsStorySaved(false);
+    props.setStoryTitle('');
+    props.setStoryDesc('');
+    props.setStorySubj('');
+  }
 
   return (
     <div>
-      <h1>Grammar Parser Report Page</h1>
-      {stories.map((story, index) => (
+      <h1>Grammatical Parser Report Page</h1>
+      {props.stories.map((story, index) => (
         <div key={index} className="main-box">
           <h2>{story.title}</h2>
           <div className="box-container">
@@ -80,6 +35,12 @@ const ReportPage = () => {
           </div>
         </div>
       ))}
+      <button
+        onClick={handleClick}
+        className='btn'
+      >
+        Add Another Story
+      </button>
     </div>
   );
 };

@@ -1,11 +1,11 @@
 import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom'
+import '@testing-library/jest-dom';
 import UserStoryInput from '../components/UserStoryInput';
 
 test('renders all text fields', () => {
-  render(<UserStoryInput />);
-  const linkElement = screen.getAllByText(/User Story/i)[0];
-  expect(linkElement).toBeInTheDocument();
+    render(<UserStoryInput />);
+    const linkElement = screen.getAllByText(/User Story/i)[0];
+    expect(linkElement).toBeInTheDocument();
 });
 
 test('renders user story title field field', () => {
@@ -25,3 +25,9 @@ test('renders user story subject field', () => {
     const linkElement = screen.getByText(/Story Subject/i);
     expect(linkElement).toBeInTheDocument();
 });
+
+test('renders optional label', () => {
+    render(<UserStoryInput />);
+    const linkElement = screen.getByText(/Enter a noun/i);
+    expect(linkElement).toBeInTheDocument();
+  });
