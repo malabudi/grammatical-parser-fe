@@ -139,7 +139,7 @@ const Editlistmodel = () => {
               <EditableWordList
                 title="Nouns"
                 items={story.nouns}
-                onUpdate={(updatedItem) => handleUpdate(index, 'nouns', updatedItem)}
+                onUpdate={handleUpdate}
                 onAdd={(newItem) => handleAddItem(index, 'nouns', newItem)}
                 onDelete={(itemIndex) => handleDeleteItem(index, 'nouns', itemIndex)}
               />
