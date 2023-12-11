@@ -27,6 +27,7 @@
 
 .word-list {
   list-style-type: none;
+  justify-content: ce;
   padding: 20px;
   text-align: center; /* Center the text in the word list */
 }

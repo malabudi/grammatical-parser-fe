@@ -82,8 +82,10 @@ const EditableWordList = ({ title, items, onUpdate, onAdd, onDelete }) => {
             <button onClick={handleAdd}>Add</button>
           </div>
         </li>
+        
       </ul>
     </div>
+    
   );
 };
 const Editlistmodel = () => {
@@ -150,8 +152,11 @@ const Editlistmodel = () => {
                 onAdd={(newItem) => handleAddItem(index, 'verbs', newItem)}
                 onDelete={(itemIndex) => handleDeleteItem(index, 'verbs', itemIndex)}
               />
+              
             </div>
+            <button onClick={() => console.log('')}>Save</button> 
           </div>
+          
         ))}
       </div>
     </div>
