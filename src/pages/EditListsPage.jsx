@@ -1,6 +1,8 @@
+import '../styles/EditListsPage.css';
 import {useQuery} from 'react-query';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
+import GrammarList from '../components/GrammarList';
 
 function EditListsPage(props) {
     let story;
@@ -67,27 +69,14 @@ function EditListsPage(props) {
     })
 
     return (
-        <div>
-            {story.map((element) => {
+        <div className='edit-page'>
+            {story.map((element, i) => {
                 return (
-                    <>
-                        <h1>nouns</h1>
-                        {element.nouns.map((list) => {
-                            return (
-                                <>
-                                    <h2>{list.word}</h2>
-                                </>
-                            )
-                        })}
-                        <h1>verbs</h1>
-                        {element.verbs.map((list) => {
-                            return (
-                                <>
-                                    <h2>{list.word}</h2>
-                                </>
-                            )
-                        })}
-                    </>
+                    <GrammarList
+                        key={i}
+                        nouns={element.nouns}
+                        verbs={element.verbs}
+                    />
                 )
             })}
             <button

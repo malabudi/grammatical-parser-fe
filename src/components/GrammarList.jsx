@@ -1,32 +1,33 @@
 import '../styles/GrammarList.css';
+import Divider from '@mui/material/Divider';
 
-
-function GrammarList() {
+function GrammarList(props) {
   return (
     <div className='ListContainer'>
-      <div
-        className = 'NounList'>
-          Noun:
-           <div>*Analyze the grammatical structure</div>
-          <div>*Understand the grammatical structure</div>
-          <div>*Easily input a new sentence</div>
-          </div>
-
-         
-
-        <div className= 'VerbList'>
-          Verb:
-          <div>*Input a sentence into parser</div>
-  <div>*See the Parsed results displayed on interface</div>
-  <div>*Option to clear the input field and parsing results </div>
-          </div>
-
-        
+      <div className = 'List NounList'>
+        <h2>Nouns:</h2>
+        {props.nouns.map((element, i) => {
+          return (
+            <>
+              <Divider variant="middle" />
+              <p key={i}><strong>{element.word}:</strong> {element.description}</p>
+            </>
+          )
+        })}
+      </div>
+      <div className= 'List VerbList'>
+        <h2>Verbs:</h2>
+        {props.verbs.map((element, i) => {
+          return (
+            <>
+              <Divider />
+              <p key={i}><strong>{element.word}:</strong> {element.description}</p>
+            </>
+          )
+        })}
+      </div>
     </div>
- 
-
   );
-
 }
 
 export default GrammarList;

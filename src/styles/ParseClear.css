@@ -1,11 +1,12 @@
 .btn {
-    background-color: rgb(185, 249, 228);
+    background-color: rgb(159, 241, 214);
     height: 50px;
     border-style: solid;
     font-size: medium;
     padding: 10px 25px;
     border-radius: 5px;
-    border: 1px solid black;
+    border: none;
+    box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
     font-size: 16px;
     font-weight: 500;
     margin: 20px;
@@ -15,7 +16,7 @@
 
 .btn:hover {
     transform: scale(1.03);
-    background-color: aquamarine;
+    background-color: rgb(90, 234, 186);
 }
 
 .btn:disabled {
