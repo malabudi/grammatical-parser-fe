@@ -1,11 +1,27 @@
 import '../styles/EditListsPage.css';
 import {useQuery} from 'react-query';
+import { useState } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import GrammarList from '../components/GrammarList';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
 
 function EditListsPage(props) {
     let story;
+
+    const modalStyle = {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 400,
+        bgcolor: 'background.paper',
+        border: '1px solid #000',
+        boxShadow: 'rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px',
+        borderRadius: '5px',
+        p: 4
+    };
 
     const parseDesc = async () => {
 		const res = await fetch('http://localhost:5000/parse', {
@@ -30,7 +46,23 @@ function EditListsPage(props) {
     const handleSaveClick = () => {
         props.setStories([...props.stories, story[0]]);
         props.setIsStorySaved(true);
+        setNounsList(story[0].nouns);
+        setVerbsList(story[0].verbs);
     }
+
+    const handleEditClick = () => {
+        handleOpen();
+        setNounsList(story[0].nouns);
+        setVerbsList(story[0].verbs);
+    }
+
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
+    // slap these sons of bitches into the modal DELETE THIS COMMMENT TOO DONT MERGE WITH IT
+    const [nounsList, setNounsList] = useState([]);
+    const [verbsList, setVerbsList] = useState([]);
 
     if (error) return <div>Request Failed, please refresh the page.</div>;
 	if (isLoading) return (
@@ -79,12 +111,35 @@ function EditListsPage(props) {
                     />
                 )
             })}
-            <button
-            onClick={handleSaveClick}
-            className='btn'
+            <div>
+                <button
+                onClick={handleSaveClick}
+                className='btn'
+                >
+                    Save
+                </button>
+                <button
+                onClick={handleEditClick}
+                className='btn'
+                >
+                    Edit
+                </button>
+            </div>
+            <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
             >
-                Save
-            </button>
+                <Box sx={modalStyle}>
+                <Typography id="modal-modal-title" variant="h6" component="h2">
+                    Text in a modal
+                </Typography>
+                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                    Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                </Typography>
+                </Box>
+            </Modal>
         </div>
     );
 }

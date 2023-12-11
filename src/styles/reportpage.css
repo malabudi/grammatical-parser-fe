@@ -14,7 +14,7 @@
 
 .main-box:hover {
     background-color: #4882a4; /* Lighten background color on hover */
-    transform: scale(1.05); /* Scale up on hover */
+    transform: scale(1.02); /* Scale up on hover */
 }
 
 .box-container {

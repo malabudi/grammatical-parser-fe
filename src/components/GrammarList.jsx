@@ -6,22 +6,22 @@ function GrammarList(props) {
     <div className='ListContainer'>
       <div className = 'List NounList'>
         <h2>Nouns:</h2>
-        {props.nouns.map((element, i) => {
+        {props.nouns?.map((element, i) => {
           return (
             <>
               <Divider variant="middle" />
-              <p key={i}><strong>{element.word}:</strong> {element.description}</p>
+              <p key={i}><span>{element.word}:</span> {element.description}</p>
             </>
           )
         })}
       </div>
       <div className= 'List VerbList'>
         <h2>Verbs:</h2>
-        {props.verbs.map((element, i) => {
+        {props.verbs?.map((element, i) => {
           return (
             <>
               <Divider />
-              <p key={i}><strong>{element.word}:</strong> {element.description}</p>
+              <p key={i}><span>{element.word}:</span> {element.description}</p>
             </>
           )
         })}

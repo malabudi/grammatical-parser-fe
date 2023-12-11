@@ -1,11 +1,16 @@
 .List {
     align-self: stretch;
     flex-basis: 100%;
-    margin-right: 1rem;
     font-size: medium;
-    padding: 10px 6rem 2rem 6rem;
+    padding: 10px 1rem;
+    min-width: 40%;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.List span {
+    text-transform: capitalize;
+    font-weight: bold;
 }
 
 .VerbList {
@@ -20,4 +25,6 @@
     display:flex;
     justify-content: stretch;
     align-items: center;
+    gap: 2rem;
+    width: 100%;
 }

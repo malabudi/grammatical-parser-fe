@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react';
-import App from './App';
+import App from '../App';
 import '@testing-library/jest-dom'
 
-test('renders how it works component in main page', () => {
+test('renders navbar', () => {
   render(<App />);
-  const linkElement = screen.getByText(/How It Works/i);
+  const linkElement = screen.getByText(/grammatical parser/i);
   expect(linkElement).toBeInTheDocument();
 });
