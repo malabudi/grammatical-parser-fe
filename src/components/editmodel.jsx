@@ -25,8 +25,8 @@ const EditableWordList = ({ title, items, onUpdate, onAdd, onDelete }) => {
     setEditDescription(items[index].description);
   };
 
-  const handleUpdate = (index) => {
-    onUpdate(index, { word: editWord, description: editDescription });
+  const handleUpdate = (index, listType) => {
+    onUpdate(index, listType, { word: editWord, description: editDescription });
     setEditingIndex(null); // Finish editing
   };
 
@@ -53,14 +53,14 @@ const EditableWordList = ({ title, items, onUpdate, onAdd, onDelete }) => {
                   value={editDescription}
                   onChange={(e) => setEditDescription(e.target.value)}
                 />
-                <button onClick={() => handleUpdate(index)}>Save</button>
+                <button onClick={() => handleUpdate(index, title.toLowerCase())}>Save</button>
               </div>
             ) : (
               <div onClick={() => handleItemClick(index)}>
                 <span>
                   <strong>{item.word}</strong>: {item.description}
                 </span>
-                <button onClick={() => handleDelete(index)}>-</button>
+                <button onClick={() => handleDelete(index, title.toLowerCase())}>-</button>
               </div>
             )}
           </li>
@@ -121,16 +121,9 @@ const Editlistmodel = () => {
     setStories(updatedStories);
   };
 
-  const handleUpdate = (storyIndex, listType, updatedItem) => {
+  const handleUpdate = (editingIndex, listType, updatedItem) => {
     const updatedStories = [...stories];
-    updatedStories[storyIndex][listType] = updatedStories[storyIndex][listType].map((item, index) =>{
-      index === updatedItem.index ? updatedItem.data : item
-      if (index == updatedItem.index )
-      {
-          
-      }
-  }
-    );
+    updatedStories[0][listType][editingIndex] = updatedItem; // Its okay to have 0 as the index for now, this will change when modal is hooked to the site
     setStories(updatedStories);
   };
 
@@ -153,7 +146,7 @@ const Editlistmodel = () => {
               <EditableWordList
                 title="Verbs"
                 items={story.verbs}
-                onUpdate={(updatedItem) => handleUpdate(index, 'verbs', updatedItem)}
+                onUpdate={handleUpdate}
                 onAdd={(newItem) => handleAddItem(index, 'verbs', newItem)}
                 onDelete={(itemIndex) => handleDeleteItem(index, 'verbs', itemIndex)}
               />
