@@ -12,7 +12,7 @@
     transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth background color and scaling transition */
 }
 
-.main-box {
+.main-box:hover {
     background-color: #4882a4; /* Lighten background color on hover */
     transform: scale(1.02); /* Scale up on hover */
 }

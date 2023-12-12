@@ -1,5 +1,3 @@
-
-
 import '../styles/editmodel.css';
 import React, { useState } from 'react';
 
@@ -32,7 +30,6 @@ const EditableWordList = ({ title, items, onUpdate, onAdd, onDelete }) => {
 
   const handleDelete = (index) => {
     onDelete(index);
-    setEditingIndex(null); // Finish editing, if in edit mode
   };
 
   return (
@@ -42,7 +39,7 @@ const EditableWordList = ({ title, items, onUpdate, onAdd, onDelete }) => {
         {items.map((item, index) => (
           <li key={index} className="word-item">
             {editingIndex === index ? (
-              <div>
+              <div className='edit-container'>
                 <input
                   type="text"
                   value={editWord}
@@ -57,19 +54,17 @@ const EditableWordList = ({ title, items, onUpdate, onAdd, onDelete }) => {
               </div>
             ) : (
               <div onClick={() => handleItemClick(index)}>
-                
-                <span>
+                <span className='editable-input'>
                   <strong>{item.word}</strong>: {item.description}
-                  
                 </span>
                 <smallbutton className='delete-button'
-                onClick={() => handleDelete(index, title.toLowerCase())}>Delete</smallbutton>
+                onClick={() => handleDelete(index, title.toLowerCase())}>-</smallbutton>
               </div>
             )}
           </li>
         ))}
         <li>
-          <div className="word-item">
+          <div className="edit-container">
             <input
               type="text"
               value={newWord}
@@ -82,7 +77,7 @@ const EditableWordList = ({ title, items, onUpdate, onAdd, onDelete }) => {
               onChange={(e) => setNewDescription(e.target.value)}
               placeholder="Description"
             />
-            <button className='add-button'onClick={handleAdd}>Add</button>
+            <button className='save-editedwords-button' onClick={handleAdd}>Add</button>
           </div>
         </li>
         
@@ -91,32 +86,19 @@ const EditableWordList = ({ title, items, onUpdate, onAdd, onDelete }) => {
     
   );
 };
-const Editlistmodel = () => {
-  // Your existing code for sampleStories and other functions
-  const sampleStories = [
-    {
-      title: 'Story 1',
-      nouns: [
-        { word: 'Dog', description: 'A furry friend' },
-        { word: 'Tree', description: 'Tall and green' },
-        { word: 'Read', description: 'Understand written words' },
-        { word: 'Read', description: 'Understand written words' },
-        { word: 'Read', description: 'Understand written words' },
-      ],
-      verbs: [
-        { word: 'Run', description: 'Move rapidly' },
-        { word: 'Read', description: 'Understand written words' },
-        { word: 'Read', description: 'Understand written words' },
-        { word: 'Read', description: 'Understand written words' },
-      ],
-    },
-  ];
-
-  const [stories, setStories] = useState(sampleStories);
+const Editlistmodel = (props) => {
+  const [stories, setStories] = useState(props.story);
 
   const handleDeleteItem = (storyIndex, listType, itemIndex) => {
     const updatedStories = [...stories];
-    updatedStories[storyIndex][listType] = updatedStories[storyIndex][listType].filter((_, index) => index !== itemIndex);
+
+    if (itemIndex === 0) {
+      updatedStories[storyIndex][listType].shift();
+    }
+    else {
+      updatedStories[storyIndex][listType].splice(itemIndex, itemIndex);
+    }
+    
     setStories(updatedStories);
   };
 
@@ -128,7 +110,7 @@ const Editlistmodel = () => {
 
   const handleUpdate = (editingIndex, listType, updatedItem) => {
     const updatedStories = [...stories];
-    updatedStories[0][listType][editingIndex] = updatedItem; // Its okay to have 0 as the index for now, this will change when modal is hooked to the site
+    updatedStories[0][listType][editingIndex] = updatedItem;
     setStories(updatedStories);
   };
 
@@ -136,7 +118,7 @@ const Editlistmodel = () => {
   return (
     <div className="popup-container">
       <div className="popup">
-        <h1>Edit stories</h1>
+        <h1>Edit Story</h1>
         {stories.map((story, index) => (
           <div key={index} className="main-box">
             <h2>{story.title}</h2>
@@ -155,12 +137,26 @@ const Editlistmodel = () => {
                 onAdd={(newItem) => handleAddItem(index, 'verbs', newItem)}
                 onDelete={(itemIndex) => handleDeleteItem(index, 'verbs', itemIndex)}
               />
-              
             </div>
-            <button onClick={() => console.log('Save button clicked')}>Save</button> 
           </div>
-          
         ))}
+        <div className='modal-btn-container'>
+          <button onClick={() => {
+            props.closeModal();
+            props.setCurStory([...stories]);
+          }}
+          className='btn modal-btn'
+          >
+              Save
+          </button>
+          <button onClick={() => {
+            props.closeModal();
+          }}
+          className='btn modal-btn close-btn'
+          >
+              Exit
+          </button> 
+        </div>
       </div>
     </div>
   );

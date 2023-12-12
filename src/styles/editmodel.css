@@ -4,7 +4,7 @@
   margin-top: 0px; /* Remove top margin */
   border-radius: 100px;
   box-shadow: 10 10 10px rgba(80, 62, 62, 0.1);
-  max-width: fit; /* Adjust the maximum width as needed */
+  min-width: fit; /* Adjust the maximum width as needed */
   justify-content: center;
   display: flex;
   flex-direction: column; /* Stack children (box-container and other elements) vertically */
@@ -27,37 +27,14 @@
     margin-right: 0px; /* Add space between boxes */
     transition: box-shadow 0.3s ease; /* Smooth box-shadow transition */
 }
-.final-save-button{
-  cursor: pointer;
-  background-color: #5149e9; /* Red background color */
-  color: #f1eded;
-  border: none;
-  
-  padding: 5px 10px; /* Adjust the padding as needed */
-  border-radius: 10px;
-  margin-left: 10px;
-  font-size: 12px; /* Adjust the font size for a smaller button */
-}
-
-.save-editedwords-button{
-  cursor: pointer;
-  background-color: #026e0f; /* Red background color */
-  color: #f1eded;
-  border: none;
-  padding: 15px; /* Adjust the padding as needed */
-  border-radius: 10px;
-  margin-left: 10px;
-  font-size: 12px; /* Adjust the font size for a smaller button */
-}
-/* editmodel.css */
 
 .description-box input {
   width: 100px; /* Adjust the width as needed */
   padding: 8px; /* Add padding for a nicer appearance */
   border: 1px solid #ccc; /* Add a border for better visibility */
   border-radius: 40px; /* Add border-radius for rounded corners */
-  font-size: 14px; /* Adjust font size
-
+  font-size: 14px; /* Adjust font size */
+}
 
 .input-box input[type="text"] {
   width: 100px; /* Adjust the width as needed */
@@ -66,6 +43,7 @@
   cursor: pointer;
   background-color: #ff0000; /* Red background color */
   color: #f90202;
+  float: right;
   border: none;
   padding: 5px 10px; /* Adjust the padding as needed */
   border-radius: 10px;
@@ -90,4 +68,57 @@
 
 .delete-button:hover {
   background-color: #c03a3a; /* Darker red on hover */
+}
+
+.main-box {
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
+  flex-direction: column;
+  transition: all 100ms ease;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.edit-container {
+  display: flex;
+  gap: 5px;
+}
+
+.editable-input {
+  cursor: pointer;
+  transition: 100ms all ease;
+}
+
+.editable-input:hover {
+  color: rgb(75, 75, 75);
+}
+
+.save-editedwords-button {
+  cursor: pointer;
+  background-color: #026e0f; /* Red background color */
+  color: #f1eded;
+  border: none;
+  padding: 7px 15px; /* Adjust the padding as needed */
+  border-radius: 10px;
+  margin-left: 10px;
+  font-size: 12px; /* Adjust the font size for a smaller button */
+}
+
+.modal-btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+.modal-btn {
+  padding: 10px 15px;
+  width: 10%;
+}
+
+.close-btn {
+  background-color: gray;
+}
+
+.close-btn:hover {
+  background-color: rgb(170, 170, 170);
 }

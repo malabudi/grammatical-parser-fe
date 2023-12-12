@@ -1,5 +1,5 @@
 import './App.css';
-import Footer from './components/Footer';
+//import Footer from './components/Footer';
 import {QueryClient, QueryClientProvider} from 'react-query';
 import ParsePage from './pages/ParsePage';
 import { useState } from 'react';
@@ -65,7 +65,6 @@ function App() {
             />
           }
         </Container>
-        <Footer />
       </div>
 		</QueryClientProvider>
   );
