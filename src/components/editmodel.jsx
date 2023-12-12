@@ -1,7 +1,6 @@
 import '../styles/editmodel.css';
 import React, { useState } from 'react';
 
-
 const EditableWordList = ({ title, items, onUpdate, onAdd, onDelete }) => {
   const [editWord, setEditWord] = useState('');
   const [editDescription, setEditDescription] = useState('');
